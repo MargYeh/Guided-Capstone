@@ -162,7 +162,7 @@ data.limit(5).show() #Sample of 5 from json for testing purposes
 data2 = get_csv(spark, storage_account, container, "Test_csv.txt")
 data2.limit(5).show() #Sample of 5 from csv file for testing purposes
 
-data.write.partitionBy("partition").mode("overwrite").parquet("output/test.parquet")
+data.write.partitionBy("partition").mode("overwrite").parquet("output_dir")
 
 #Testing if spark works------------ Remove later
 
