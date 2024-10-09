@@ -1,6 +1,6 @@
-Data Ingestion Writeup
+## Data Ingestion Writeup
 This is a project that takes Stock Exchange data in csv or json files in a semi-structured text format, and uses pySpark to parse this information into a Spark DataFrame. These DataFrames can be outputted into a parquet file which partitions the information into Trades, Quotes, and Bad (corrupted) Records.  Files used for processing this data were uploaded into Azure Blob Storage using AzCopy. One of each type of file (Test_json and Test_csv) located at the root were used for the screenshots below.
-CommonEvent
+# CommonEvent
 All events are loaded as CommonEvent objects, which uses the following schema:
 | Column  	| Type 		|
 | ------------- 	| ------------- 	|
@@ -20,17 +20,13 @@ All events are loaded as CommonEvent objects, which uses the following schema:
 | partition 	| StringType 	|
 | errormsg 	| StringType 	|
 
-To run: Load data into Azure Blob Storage and replace the following in data_injestion.py:
- 
+# To run: Load data into Azure Blob Storage and replace the following in data_injestion.py:
+ ![image](https://github.com/user-attachments/assets/8e247bf1-ef39-43a0-97d9-abe54d666b0c)
+
 
 The code will automatically download the necessary Hadoop-azure.jar and azure-storage.jar files, but these files are also included within the jars folder if needed.
 
+# Sample Screenshots:
+ ![image](https://github.com/user-attachments/assets/e3ffc85c-8064-42bd-bb88-439e87851ec1)
 
-
-
-
-
-
-Sample Screenshots:
- 
 Top is a sample of the first 5 entries from test_json, bottom is a sample of test_csv
