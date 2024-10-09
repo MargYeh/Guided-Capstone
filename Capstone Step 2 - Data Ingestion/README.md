@@ -30,3 +30,8 @@ The code will automatically download the necessary Hadoop-azure.jar and azure-st
  ![image](https://github.com/user-attachments/assets/e3ffc85c-8064-42bd-bb88-439e87851ec1)
 
 Top is a sample of the first 5 entries from test_json, bottom is a sample of test_csv
+
+##Output
+The result is outputted as parquet files to HDFS through the following code:
+![image](https://github.com/user-attachments/assets/64fc7aae-60e7-44cf-838c-59aa2a04d900)
+
