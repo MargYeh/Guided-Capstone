@@ -159,9 +159,9 @@ def get_csv(spark, storage, container, location):
     return data
 #%%
 
-# storage_account = '<storage_account_name>'
-# storage_access_key = '<storage_access_key>'
-# container = '<container_name>'
+storage_account = '<storage_account_name>'
+storage_access_key = '<storage_access_key>'
+container = '<container_name>'
 
 spark = session_setup(storage_account, storage_access_key)
 #%%
