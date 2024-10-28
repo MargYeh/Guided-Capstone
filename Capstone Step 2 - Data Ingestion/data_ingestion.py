@@ -1,3 +1,11 @@
+#%%
+# import findspark
+# import os
+# import time
+# findspark.init('C:/spark', edit_rc=True)
+# os.environ['SPARK_HOME'] = 'C:/spark'
+# os.environ['HADOOP_HOME'] = 'C:/hadoop'
+
 from pyspark.sql import SparkSession 
 from datetime import datetime
 import json
@@ -149,28 +157,31 @@ def get_csv(spark, storage, container, location):
     parsed = raw.map(lambda line: parse_csv(line)) 
     data = spark.createDataFrame(parsed)
     return data
+#%%
 
-
-
-storage_account = '<storage_account_name>'
-storage_access_key = '<storage_access_key>'
-container = '<container_name>'
+# storage_account = '<storage_account_name>'
+# storage_access_key = '<storage_access_key>'
+# container = '<container_name>'
 
 spark = session_setup(storage_account, storage_access_key)
+#%%
 data = get_json(spark, storage_account, container, "Test_json.txt")
 data.limit(5).show() #Sample of 5 from json for testing purposes
 data2 = get_csv(spark, storage_account, container, "Test_csv.txt")
 data2.limit(5).show() #Sample of 5 from csv file for testing purposes
-
-data.write.partitionBy("partition").mode("overwrite").parquet("output_dir")
+#%%
+combined_data = data.union(data2)
+combined_data.write.partitionBy("partition").mode("overwrite").parquet("output_dir")
 
 #Testing if spark works------------ Remove later
-
+#%%
 # def test_spark_session():
 #     spark = SparkSession.builder.getOrCreate()
 #     df = spark.createDataFrame([(1, "a"), (2, "b")], ["id", "value"])
-#     df.write.option("header",True).partitionBy("id").mode("overwrite").parquet("output.parquet")
+#     #df.write.option("header",True).partitionBy("id").mode("overwrite").parquet("output.parquet")
 #     result = df.collect()
 #     print(result)
 
 # test_spark_session()
+
+# %%
