@@ -1,5 +1,6 @@
 # Data Ingestion Writeup
-This is a project that takes Stock Exchange data in csv or json files in a semi-structured text format, and uses pySpark to parse this information into a Spark DataFrame. These DataFrames can be outputted into a parquet file which partitions the information into Trades, Quotes, and Bad (corrupted) Records.  Files used for processing this data were uploaded into Azure Blob Storage using AzCopy. One of each type of file (Test_json and Test_csv) located at the root were used for the screenshots below.
+This is a project that takes Stock Exchange data in csv or json files in a semi-structured text format, and uses pySpark to parse this information into a Spark DataFrame. These DataFrames are outputted into a parquet file which partitions the information into Trades, Quotes, and Bad (corrupted) Records.  Files used for processing this data were uploaded into Azure Blob Storage using AzCopy. One of each type of file (Test_json and Test_csv) located at the root were used for the screenshots below, but the path can be changed to process additional files.
+
 ## CommonEvent
 All events are loaded as CommonEvent objects, which uses the following schema:
 | Column  	| Type 		|
@@ -32,6 +33,5 @@ The code will automatically download the necessary Hadoop-azure.jar and azure-st
 Top is a sample of the first 5 entries from test_json, bottom is a sample of test_csv
 
 ## Output
-The result is outputted as parquet files to HDFS through the following code:
-![image](https://github.com/user-attachments/assets/64fc7aae-60e7-44cf-838c-59aa2a04d900)
+Spark dataframes are combined and outputted as parquet files in output_dir. These files are partitioned into those rated Q (Quotes), T (Trades), and B (Bad records)
 
