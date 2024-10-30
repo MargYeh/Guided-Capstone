@@ -1,6 +1,6 @@
 ## Guided Capstone 3 - EOD Writeup
-This part of the project uses locally stored parquet files previously partitioned into Trades and Quotes, and then cleans them by removing duplicate exchanges and replacing them with the latest exchange.
-Exchanges are identified uniquely by their trade_dt, symbol, event_tm, exchange, event_seq_nb. From those that share the same identification, the one with the earliest arrival_tm will be taken. 
+This part of the project uses locally stored parquet files previously partitioned into Trades and Quotes, and then cleans them by removing excess columns that are not used. Duplicate exchanges are also removed and replaced with only the latest exchange.
+When cleaning the duplicate entries, exchanges are identified uniquely by trade_dt, symbol, event_tm, exchange, and event_seq_nb. Then from those that share the same identification, the one with the earliest arrival_tm will be taken. 
 
 #Results after cleaning the trades:
 ![image](https://github.com/user-attachments/assets/9d175817-dfe5-4465-bba4-6f724df6d20c)
