@@ -10,9 +10,10 @@ spark = SparkSession.builder.appName('EOD Data Load').config("spark.jars.package
 
 #%%
 #Read trade partition dataset and select the necessary columns
-trade_common = spark.read.parquet('output_dir/partition=T')
+
+trade_common = spark.read.parquet('../Capstone Step 2 - Data Ingestion/output_dir/partition=T')
 trade = trade_common.select('trade_dt', 'symbol', 'exchange', 'event_tm', 'event_seq_nb', 'arrival_tm', 'bid_pr', 'bid_size', 'trade_pr', 'trade_size') #for trades, bid_pr and bid_size also contain the trade price and size
-quote_common = spark.read.parquet('output_dir/partition=Q')
+quote_common = spark.read.parquet('../Capstone Step 2 - Data Ingestion/output_dir/partition=Q')
 quote = quote_common.select('trade_dt', 'symbol', 'exchange', 'event_tm', 'event_seq_nb', 'arrival_tm', 'bid_pr', 'bid_size', 'ask_pr', 'ask_size')
 
 # %%
