@@ -61,8 +61,10 @@ def parse_csv(line:str):
                                   record[4], #Event time
                                   record[5], #Event Sequence
                                   record[1], #File_tm
-                                  record[7], #Trade Price
-                                  record[8], #Trade Size
+                                  bid_pr=record[7], #Bid Price
+                                  bid_size=record[8], #Bid Size
+                                  trade_pr=record[7], #Trade Price
+                                  trade_size=record[8], #Trade Size
                                   partition='T'
                                   )
             return event
@@ -104,6 +106,8 @@ def parse_json(line:str):
                                   record['file_tm'], #File_tm
                                   record['price'], #Trade Price
                                   record['size'], #trade_size
+                                  bid_pr=record['price'], #Bid Price
+                                  bid_size=record['size'], #Bid Size
                                   partition='T'
                                   )
             return event
