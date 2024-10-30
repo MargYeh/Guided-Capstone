@@ -1,7 +1,8 @@
 # Guided_Capstone
 This is the Guided Capstone project for SpringBoard's Data Engineering bootcamp. It uses Pyspark to read csv or json files stored on Azure Blob Storage and converts them into Spark Dataframes to be cleaned and analyzed. The data is in the form of daily submission of stock exchanges from Spring Capital data sources
 
-## Step 1 - Figure
+## Step 1 - Flowchart of Process
+![image](https://github.com/user-attachments/assets/38f1683e-8cba-47d8-bef9-983073d7e24b)
 
 ## Step 3 - EOD Writeup
 This part of the project uses locally stored parquet files previously partitioned into Trades and Quotes, and then cleans them by removing excess columns that are not used. Duplicate exchanges are also removed and replaced with only the latest exchange.
