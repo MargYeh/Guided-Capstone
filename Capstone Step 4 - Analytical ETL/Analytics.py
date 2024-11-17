@@ -175,5 +175,5 @@ sql_command = """
 quote_final = spark.sql(sql_command)
 quote_final.show()
 
-quote_update.write.mode("overwrite").parquet(url + '/quote-trade-analytical/date={}'.format(trade_date))
+quote_final.write.mode("overwrite").parquet(url + '/quote-trade-analytical/date={}'.format(trade_date))
 # %%
